@@ -1,7 +1,12 @@
 package com.springjpa.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,11 +40,18 @@ public class WebController {
 		return result + "</html>";
 	}
 	
-	@RequestMapping("/findbyid")
-	public String findById(@RequestParam("id") long id){
-		String result = "";
-		result = repository.findOne(id).toString();
-		return result;
+	@RequestMapping("/findall/v1")
+	public List<Customer> findAllV1(){
+		List<Customer> list = new ArrayList();
+		Iterable<Customer>  custIterable = repository.findAll();
+		custIterable.forEach( list::add);
+		return list;
+	}
+	
+	@RequestMapping(value = "/findbyid/{id}", method = RequestMethod.GET )
+	public Customer findById(@PathVariable("id") long id){
+		return  repository.findOne(id);
+
 	}
 	
 	@RequestMapping("/findbylastname")
