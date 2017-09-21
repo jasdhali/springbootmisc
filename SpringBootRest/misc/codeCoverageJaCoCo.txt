@@ -1,0 +1,1 @@
+http://dev.macero.es/2016/02/06/test-coverage-analysis-for-your-spring-boot-app/

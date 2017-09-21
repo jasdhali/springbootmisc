@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=C:\Oracle12c\Middleware\Oracle_Home\oracle_common\modules\oracle.jdbc_12.1.0\ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.1 -Dpackaging=jar

@@ -1,0 +1,97 @@
+LIST ITEMS 
+
+curl -X "GET" http://localhost:8080/items/
+
+DELETE ITEM 
+
+1) curl -X "DELETE" http://localhost:8080/items/17
+
+CREATE ITEM
+
+curl -X "POST" -H "Content-Type:application/json" -d '{ "id": 19,"sku": "ITEM_19","reorderQuantity": 100}' http://localhost:8080/items/
+
+curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"id": 19,"sku": "ITEM_19","reorderQuantity": 100}' http://localhost:8080/items/
+
+curl -X "PUT" -H "Content-Type:application/json" -d '{ "id": 16,"sku": "ITEM_19","reorderQuantity": 50}' http://localhost:8080/items/
+
+
+LIST BOOK 
+
+curl -X "GET" http://localhost:8080/books/
+
+OUTPUT 
+
+[  
+   {  
+      "id":1,
+      "name":"Spring In Action:Covers Spring 3.0",
+      "author":"Craig Walls",
+      "price":400
+   },
+   {  
+      "id":2,
+      "name":"Spring Batch In Action",
+      "author":"Arnaud Cogoluegnes",
+      "price":500
+   },
+   {  
+      "id":3,
+      "name":"Spring Book",
+      "author":"Rod",
+      "price":300
+   },
+   {  
+      "id":4,
+      "name":"Java Book",
+      "author":"test",
+      "price":100
+   },
+   {  
+      "id":5,
+      "name":"Spring Boot Application",
+      "author":"test",
+      "price":200
+   },
+   {  
+      "id":6,
+      "name":"Learn Spring Data JPA",
+      "author":"test",
+      "price":300
+   },
+   {  
+      "id":7,
+      "name":"Hibernat in Action",
+      "author":"Gavin King",
+      "price":300
+   },
+   {  
+      "id":8,
+      "name":"JSF in Action",
+      "author":"Kit",
+      "price":400
+   },
+   {  
+      "id":9,
+      "name":"Java Interview Questions",
+      "author":"Subramanian",
+      "price":450
+   },
+   {  
+      "id":10,
+      "name":"Java Complete Reference",
+      "author":"Herbert",
+      "price":450
+   }
+]
+
+
+LIST SINGLE BOOK
+curl -X "GET" http://localhost:8080/books/1
+
+{"id":1,"name":"Spring In Action:Covers Spring 3.0","author":"Craig Walls","price":400}
+
+CREATE BOOK
+
+curl -X "POST" http://localhost:8080/books
+
+
