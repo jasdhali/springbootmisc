@@ -8,12 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * Customer java entity.
+ * @author jaspal
+ *
+ */
 @Entity
 @Table(name = "customer")
 public class Customer implements Serializable {
- 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -3009157732242241606L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -26,7 +33,11 @@ public class Customer implements Serializable {
  
 	protected Customer() {
 	}
- 
+	/**
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 */
 	public Customer(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -36,11 +47,17 @@ public class Customer implements Serializable {
 	public String toString() {
 		return String.format("Customer[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLastName() {
 		return lastName;
 	}

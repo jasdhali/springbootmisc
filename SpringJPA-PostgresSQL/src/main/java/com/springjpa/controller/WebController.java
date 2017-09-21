@@ -51,7 +51,6 @@ public class WebController {
 	@RequestMapping(value = "/findbyid/{id}", method = RequestMethod.GET )
 	public Customer findById(@PathVariable("id") long id){
 		return  repository.findOne(id);
-
 	}
 	
 	@RequestMapping("/findbylastname")

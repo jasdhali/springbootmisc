@@ -57,6 +57,20 @@ public class WebControllerTest {
 		;
 	}
 	@Test
+	public void findById_Success() throws Exception{
+		Customer cust = new Customer("jas","singh");
+		
+		given( repository.findOne( 3l ) ).willReturn( cust );
+		
+		mvc.perform( get("/findbyid/3")
+			.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
+		//.andExpect(jsonPath("$" , hasSize(1)))
+		.andExpect( jsonPath("$.firstName" , is(cust.getFirstName())))
+		;
+	}
+	
+	@Test
 	public void saveCust_Success() throws Exception{
 		Customer cust = new Customer("jas","singh");
 		List<Customer> listCust = new ArrayList<Customer>();
