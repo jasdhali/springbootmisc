@@ -15,7 +15,6 @@ public class ApiController {
 		summary.put("first", 1L);
 		summary.put("second", 2L);
 		return summary;
-
 	}
 
 }

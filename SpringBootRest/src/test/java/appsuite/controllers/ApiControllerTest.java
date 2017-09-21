@@ -24,8 +24,6 @@ import org.springframework.web.context.WebApplicationContext;
 import appsuite.web.ApiController;
 
 @RunWith(SpringRunner.class)
-//@WebAppConfiguration
-//@ContextConfiguration
 @WebMvcTest(value = ApiController.class, secure = false)
 public class ApiControllerTest {
 

@@ -56,7 +56,7 @@ public class ItemControllerTest {
 		String expected = "{\"id\":10,\"sku\":\"Item10\",\"reorderQuantity\":20}";
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
-	
+	/*
 	@Test
 	public final void testAddItem_SUCCESS() throws Exception {
 		Mockito.doNothing().when(itemService).addItem(mockItem);
@@ -66,4 +66,5 @@ public class ItemControllerTest {
 		String expected = "{\"id\":10,\"sku\":\"Item10\",\"reorderQuantity\":20}";
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
+	*/
 }

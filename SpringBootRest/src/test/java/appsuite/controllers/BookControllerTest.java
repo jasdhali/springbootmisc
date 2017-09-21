@@ -1,31 +1,34 @@
 package appsuite.controllers;
 
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import appsuite.domain.Book;
-import appsuite.service.BookService;
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import static org.mockito.Mockito.mock;
 import appsuite.web.BooksController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = BooksController.class, secure = false)
 public class BookControllerTest {
-	@Autowired
-	private MockMvc mockMvc;
 
-	@MockBean
-	private BookService bookService;
-
-	Book book = new Book();
-
-	public Book getBookTest() {
-		Mockito.when(bookService.findOne(Mockito.anyLong())).thenReturn(book);
-		return book;
-
+	@InjectMocks
+	private BooksController booksController;
+	
+	private HttpServletRequest request;
+	
+	private HttpServletResponse response;
+	
+	@Before
+	public void init(){
+		MockitoAnnotations.initMocks(this);
+		request = mock(HttpServletRequest.class);
+		response = mock(HttpServletResponse.class);
 	}
+	
+	public void 
 }
