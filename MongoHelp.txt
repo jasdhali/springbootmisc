@@ -1,0 +1,230 @@
+Use Cases for MongoDB
+	Or advantages.
+	- Designed for web applications and internet infrastructure.
+	- High read and write throughput.
+	- Flexible schema. Dont enforce a fixed schema.
+	- Fast writes -  
+		1) You can execute a write and have it return immediately without write to be achknoledged.
+		2) 	
+
+Database Structures  - (Logical and Physical)
+
+	Every server can have multiple databases
+	Each database has multiple collections.
+	Each collections has multiple documents.
+	Each document is a structured and organized key value pair.
+	It is not required for two documents to have same key value pairs.
+
+Data Modelling 
+	-Design your schema according to user requirements.
+	- Combine objects into one document if you will use them together. Otherwise separate them (but make sure there should not be need of joins).
+	- Duplicate the data (but limited) because disk space is cheap as compare to compute time.
+	- Do joins while write, not on read.
+	- Optimize your schema for most frequent use cases.
+	- Do complex aggregation in the schema.
+	
+ 	Of all NoSql databases the document oriented databases are similar to relational databases when it comes to modelling.
+ 	Differences with relational databases.
+ 	  - No Joins
+ 	  - Arrays and Embedded Documents  - Embedded documents can be queried using dot notation.
+ 	  - Denormalization. Using denormalized data can be alternate to using joins. (Data Another possibility is creating design queries 
+ 	  - No Transactions - 
+ 
+Using Database - 
+ 	CREATE 
+	- Use command - Will create a new database if does'nt exist.
+	- Checking db   > db
+	- Showing dbs - > show dbs
+	DROP
+	- First switch to the database then 
+	- > db.dropDatabase()
+	
+Collections
+	CREATE 
+	 - db.createColection("name", {} )
+	 - options ====>> capped,autoIndexID,size,max
+	 - Show Collections
+	 - No need to create collections explicitely. Insert command will implicitely create collection.
+	  > db.tutorialspoint.insert({"name":"tutorialspoint"})
+	DROP
+	 - drop() Method - 
+	 - db.COLLECTION_NAME.drop()
+	 - 
+
+Data Types 
+	- String - 
+	- Integer - (32 or 64 depending on server)
+	- Boolean - true/false 
+	- Double - 
+	- Min/Max Keys - 
+	- Arrays - 
+	NULL
+	Date - Unix date format.
+	Symbol - 
+	Object Id - Document's Id.
+	Binary Data - Bin data 
+	Code - JavaScript code
+	Regular Expression - 
+	
+
+Insert Document - Like RDBMS insert statement - insert() or save()
+	- db.collection
+	- If id is not specified mongo will assign an id 12 bytes (4 bytes TimeStamp,3 Bytes Machine id,2 bytes process id, 3 bytes running number)
+	- Upsert - Inserts 
+	
+Query Document - 
+	- find() - All documents in non-structured way.
+	- pretty() - formats documents.
+	- findOne() - returns only one document.
+	- 
+	- Mongo returns an error if very large data set is sorted without an index.
+	- Cursor feature in mongo. (Similar to Oracle cursor).
+	- Where clause equivalents - 
+		Equality 	- 	{ 'key' : 'value' } 		- db.mycol.find({"by":"tutorials"}).pretty()
+		Less Than 	- 	{ 'key' : {$lt : 'value'} }	- db.mycol.find({"likes":{$lt : "tutorials"}}).pretty()
+		Less Than Equals 	-	$lte
+		Greater Than 	- 	{ 'key' : {$gt : 'value'} }	- db.mycol.find({"likes":{$lt : "tutorials"}}).pretty()
+		Greater Than Equals  - $gte
+		Not Equals	- $ne
+		
+	- AND in mongo DB.
+	      - If multiple keys are passed separated by ',' it is equivalent to using and AND Query.
+	- OR 
+	      - $or is used in query. db.mycoll.find({$or : [{},{}]}).pretty()
+	- Using AND and OR together.
+	- 
+	      
+Update Document - 
+	- Regular update - db.COLLECTION_NAME.update(SELECTIOIN_CRITERIA, UPDATED_DATA) - 
+		db.mycol.update({'title':'MongoDB Overview'},{$set:{'title':'New MongoDBTutorial'}})
+		
+	- Upsert - updates if exist otherwise inserts.
+	- save() method - Replaces existing document with new document.
+	- Multiple Updates - Additional parameter of 1 needs to be passed.
+	
+Delete Document - 
+	- remove() function. (Matching , only One or All)
+	- 
+Projection - Selecting only what is needed.
+	- find() - supply 1 for the key if should be shown otherwise 0.
+	- 
+Limiting Records - 
+	- limit() - Is applied on find(). Limts the data in display.
+	- skip() - Used with find() and limit(). find().limit().skip().
+	- 
+Sorting Data - 
+	- sort() - Sorts the data - used with find(). 1 is used for ascending while -1 is used for descending.
+	- example - db.mycol.find({} , {"title" : 1, _id:0}).sort({"title":-1})
+	
+Indexing - 
+	- Function ensureIndex() is used to create index. Data is passed as document (key and order) 
+	ensureIndex({"title":1},{OPTIONAL_LIST_OF_OPTIONS})
+	( Options are background, inuque, name , dropDups , sparse etc.)
+	- Indexes used for getting optimized performance.
+		Indexes are created via ensureIndex:
+		// where "name" is the field name
+		db.unicorns.ensureIndex({name: 1});
+		
+		And dropped via dropIndex:
+		db.unicorns.dropIndex({name: 1});
+		
+		A unique index can be created by supplying a second parameter and setting unique to true:
+		db.unicorns.ensureIndex({name: 1},
+		{unique: true});
+		Can be created on embedded fields and on array fields. Also compound indexes.
+
+Aggregation - These are operations that process data records and return computed results. In other words aggregation is 
+	similar to count(*) and Group By in SQL.
+	Done by aggregate() method.
+	Expression language used is $group, $by_column_name , $sum etc.
+	
+Pipelining Commands - 
+
+Replication - 
+	What - Is the process of synchronizing data across multiple servers. 
+	Why - (Data safety, high availability of data, disaster recovery, No downtime,
+	How - Mongo DB achieves replication by using Replica Set. Replica set is set of mongo db instances that store same data set. 
+	One is primary while others are slaves. 
+	Commands - rs.initiate(), rs.conf(), rs.status(), rs.add(), db.isMaster(). 
+
+Sharding - 
+	What -> Process of storing data records across multiple machines.  Solves the problem of horizontal scaling. 
+		Sharding is similar to row chaining in Oracle.
+	Why - Replication all writes to one master, less memory, less disk, 
+	How - Query routers, config servers, shards (separate replica set)
+	
+Database Backup and Restore - 
+	>mongodump - Whole Database, Data File or Collections like Oracle Database , Users or Tables.
+	>mongorestore - Rstores backed up data
+
+Deployment and Gathering stats/monitoring - 
+	mongostat - produces counters inserts, queries, updates, deletes, and cursors	
+	mongotop - Read and write activity on a collection basis.
+
+RelationShip - Can be implemented using Embedded or Referenced approaches.	
+	
+Database References - Data can be reerenced from a different database.
+
+Covered Queries - 
+	All fields in query are part of an index.
+
+Analyzing Queries - 
+	$explain 
+
+Atomic Operations - 
+	Mongo maintains atomicity at document level. 
+	
+		
+DB Commands :
+        db.adminCommand(nameOrDocument) - switches to 'admin' db, and runs command [ just calls db.runCommand(...) ]
+        db.auth(username, password)
+        db.cloneDatabase(fromhost)
+        db.commandHelp(name) returns the help for the command
+        db.copyDatabase(fromdb, todb, fromhost)
+        db.createCollection(name, { size : ..., capped : ..., max : ... } )
+        db.createView(name, viewOn, [ { $operator: {...}}, ... ], { viewOptions } )
+        db.createUser(userDocument)
+        db.currentOp() displays currently executing operations in the db
+        db.dropDatabase()
+        db.eval() - deprecated
+        db.fsyncLock() flush data to disk and lock server for backups
+        db.fsyncUnlock() unlocks server following a db.fsyncLock()
+        db.getCollection(cname) same as db['cname'] or db.cname
+        db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db's collections
+        db.getCollectionNames()
+        db.getLastError() - just returns the err msg string
+        db.getLastErrorObj() - return full status object
+        db.getLogComponents()
+        db.getMongo() get the server connection object
+        db.getMongo().setSlaveOk() allow queries on a replication slave server
+        db.getName()
+        db.getPrevError()
+        db.getProfilingLevel() - deprecated
+        db.getProfilingStatus() - returns if profiling is on and slow threshold
+        db.getReplicationInfo()
+        db.getSiblingDB(name) get the db at the same server as this one
+        db.getWriteConcern() - returns the write concern used for any operations on this db, inherited from server object if set
+        db.hostInfo() get details about the server's host
+        db.isMaster() check replica primary status
+        db.killOp(opid) kills the current operation in the db
+        db.listCommands() lists all the db commands
+        db.loadServerScripts() loads all the scripts in db.system.js
+        db.logout()
+        db.printCollectionStats()
+        db.printReplicationInfo()
+        db.printShardingStatus()
+        db.printSlaveReplicationInfo()
+        db.dropUser(username)
+        db.repairDatabase()
+        db.resetError()
+        db.runCommand(cmdObj) run a database command.  if cmdObj is a string, turns it into { cmdObj : 1 }
+        db.serverStatus()
+        db.setLogLevel(level,<component>)
+        db.setProfilingLevel(level,<slowms>) 0=off 1=slow 2=all
+        db.setWriteConcern( <write concern doc> ) - sets the write concern for writes to the db
+        db.unsetWriteConcern( <write concern doc> ) - unsets the write concern for writes to the db
+        db.setVerboseShell(flag) display extra information in shell output
+        db.shutdownServer() - 
+        db.stats() - 
+        db.version() current version of the server
+	
