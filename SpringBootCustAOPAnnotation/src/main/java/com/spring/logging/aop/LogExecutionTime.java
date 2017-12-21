@@ -9,4 +9,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LogExecutionTime {
 	
+	String methodName() default "generic";
+	
+	int weight() default 100;
+	
+	
+	
 }
