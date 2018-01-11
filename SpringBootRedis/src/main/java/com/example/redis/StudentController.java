@@ -19,7 +19,7 @@ public class StudentController {
 	@Autowired
 	private StudentRepository studentRepository;
 
-	@RequestMapping(value = "/add")
+	@RequestMapping(value = "/add" , method = RequestMethod.GET)
 	public Student addStudent() {
 		Student student = new Student(
 				  "Eng2015001", "John Doe", Student.Gender.MALE, 1);
@@ -37,15 +37,15 @@ public class StudentController {
 				studentRepository.saveStudent(medStudent);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(method = RequestMethod.GET, value = "/getall", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public Map<Object, Object> getStudents() {
 		Map<Object, Object> retrievedStudents = 
 				  studentRepository.findAllStudents();
 		return retrievedStudents;
 	}
 	
-	@RequestMapping(value = "/{id}")
-	public Student getStudent(@PathVariable int id) {
+	@RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+	public Student getStudent(@PathVariable String id) {
 		Student retrievedStudent = 
 				  studentRepository.findStudent("Eng2015001");
 		return retrievedStudent;

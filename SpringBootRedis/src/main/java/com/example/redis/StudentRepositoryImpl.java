@@ -11,14 +11,20 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class StudentRepositoryImpl implements StudentRepository {
+	
  
-    private static final String KEY = "Student";
+    /*public StudentRepositoryImpl() {
+		super();
+	}*/
+
+	private static final String KEY = "Student";
      
-    private RedisTemplate<String, Student> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
+    
     private HashOperations hashOps;
  
     @Autowired
-    private StudentRepositoryImpl(RedisTemplate redisTemplate) {
+    private StudentRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
  
@@ -32,7 +38,8 @@ public class StudentRepositoryImpl implements StudentRepository {
 	 */
     @Override
 	public void saveStudent(Student student) {
-        hashOps.put(KEY, student.getId(), student);
+        //hashOps.put(KEY, student.getId(), student);
+        redisTemplate.opsForValue().set( student.getId() , student);
     }
  
     /* (non-Javadoc)
