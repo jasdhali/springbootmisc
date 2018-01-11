@@ -22,9 +22,9 @@ public class ItemController {
 
 	@Autowired
 	private ItemService itemService;
-	//= new ItemServiceImpl();
+	// = new ItemServiceImpl();
 
-	@RequestMapping(value = "/items", method = RequestMethod.GET, headers="Accept=application/json")
+	@RequestMapping(value = "/items", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseEntity<Collection<Item>> getItems() {
 		Collection<Item> items = null;
 		try {
@@ -41,36 +41,36 @@ public class ItemController {
 		Item asset = itemService.getItem(id);
 		return new ResponseEntity<Item>(asset, HttpStatus.OK);
 	}
-	
-	@RequestMapping(value = "/items", method = RequestMethod.POST, headers="Accept=application/json")
+
+	@RequestMapping(value = "/items", method = RequestMethod.POST, headers = "Accept=application/json")
 	public ResponseEntity<Item> addItem(@RequestBody Item item) throws ServiceException {
-		 itemService.addItem(item);
-		 Item itemCreated = itemService.getItem(item.getId() );
- 		 return new ResponseEntity<Item>(itemCreated , HttpStatus.OK);
+		itemService.addItem(item);
+		Item itemCreated = itemService.getItem(item.getId());
+		return new ResponseEntity<Item>(itemCreated, HttpStatus.OK);
 	}
-	
-	@RequestMapping(value = "/items", method = RequestMethod.PUT, headers="Accept=application/json")
+
+	@RequestMapping(value = "/items", method = RequestMethod.PUT, headers = "Accept=application/json")
 	public ResponseEntity<Item> updateItem(@RequestBody Item item) throws ServiceException {
-		 itemService.updateItem(item);
-		 Item itemUpdated = itemService.getItem(item.getId() );
- 		 return new ResponseEntity<Item>(itemUpdated , HttpStatus.OK);
+		itemService.updateItem(item);
+		Item itemUpdated = itemService.getItem(item.getId());
+		return new ResponseEntity<Item>(itemUpdated, HttpStatus.OK);
 	}
-	
-	private final Logger LOG = Logger.getLogger( "ItemController.class" );
+
+	private final Logger LOG = Logger.getLogger("ItemController.class");
 
 	@RequestMapping(value = "/items/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> delete(@PathVariable("id") Long itemId) throws ServiceException {
-        LOG.info("Deleting fruit with id: {}=>"+ itemId);
-        Item item = itemService.getItem(itemId);
-        if ( item == null) {
-            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-        }
-        itemService.deleteItem( itemId );
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
+	public ResponseEntity<Void> delete(@PathVariable("id") Long itemId) throws ServiceException {
+		LOG.info("Deleting fruit with id: {}=>" + itemId);
+		Item item = itemService.getItem(itemId);
+		if (item == null) {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
+		itemService.deleteItem(itemId);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
 
 	public void setItemService(ItemService itemService) {
 		this.itemService = itemService;
 	}
-	
+
 }

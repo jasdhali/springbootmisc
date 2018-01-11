@@ -24,7 +24,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     private HashOperations hashOps;
  
     @Autowired
-    private StudentRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
+    public StudentRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
  

@@ -21,18 +21,13 @@ public class ItemDatabaseImpl implements ItemDatabase {
 	@Override
 	public void updateItem(Item item) throws ServiceException {
 	}
-/*
-	@Override
-	public void deleteItem(String id) throws ServiceException {
-		Collection<Item> collectData = ItemSeedData.getSeedData().values();
-		for (Iterator<Item> iter = collectData.iterator(); iter.hasNext();) {
-			Item it = iter.next();
-			if (it.getItemId().equals(id)) {
-				iter.remove();
-			}
-		}
-	}
-*/
+
+	/*
+	 * @Override public void deleteItem(String id) throws ServiceException {
+	 * Collection<Item> collectData = ItemSeedData.getSeedData().values(); for
+	 * (Iterator<Item> iter = collectData.iterator(); iter.hasNext();) { Item it
+	 * = iter.next(); if (it.getItemId().equals(id)) { iter.remove(); } } }
+	 */
 	@Override
 	public void deleteItem(Long id) throws ServiceException {
 		ItemSeedData.getSeedData().remove(id);

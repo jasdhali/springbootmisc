@@ -18,17 +18,15 @@ public class BookControllerTest {
 
 	@InjectMocks
 	private BooksController booksController;
-	
+
 	private HttpServletRequest request;
-	
+
 	private HttpServletResponse response;
-	
+
 	@Before
-	public void init(){
+	public void init() {
 		MockitoAnnotations.initMocks(this);
 		request = mock(HttpServletRequest.class);
 		response = mock(HttpServletResponse.class);
 	}
-	
-	public void 
 }

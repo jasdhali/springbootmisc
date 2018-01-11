@@ -7,9 +7,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@SpringBootApplication(scanBasePackages="appsuite")
-//@EnableDiscoveryClient
-public class BootStarter extends org.springframework.boot.web.support.SpringBootServletInitializer{
+@SpringBootApplication(scanBasePackages = "appsuite")
+// @EnableDiscoveryClient
+public class BootStarter extends org.springframework.boot.web.support.SpringBootServletInitializer {
 
 	@RequestMapping("/hello")
 	public String home() {
@@ -22,15 +22,15 @@ public class BootStarter extends org.springframework.boot.web.support.SpringBoot
 		app.run(args);
 	}
 
-	/*@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		// TODO Auto-generated method stub
-		return super.configure(builder);
-	}*/
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(applicationClass);
-    }
+	/*
+	 * @Override protected SpringApplicationBuilder
+	 * configure(SpringApplicationBuilder builder) { // TODO Auto-generated
+	 * method stub return super.configure(builder); }
+	 */
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(applicationClass);
+	}
 
-    private static Class<BootStarter> applicationClass = BootStarter.class;
+	private static Class<BootStarter> applicationClass = BootStarter.class;
 }

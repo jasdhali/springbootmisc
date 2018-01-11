@@ -13,20 +13,20 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * @author jaspal
  *
  */
-@JsonRootName(value="item")
+@JsonRootName(value = "item")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 public class Item {
-	@JsonProperty(value="id")
+	@JsonProperty(value = "id")
 	@Id
 	private long id;
-	
-	@JsonProperty(value="sku")
-	//@Column(name="SKU")
+
+	@JsonProperty(value = "sku")
+	// @Column(name="SKU")
 	private String sku;
-	
-	@JsonProperty(value="reorderQuantity")
-	@Column(name="REORDERQUANTITY")
+
+	@JsonProperty(value = "reorderQuantity")
+	@Column(name = "REORDERQUANTITY")
 	private int reorderQuantity;
 
 	public Item() {
@@ -39,7 +39,7 @@ public class Item {
 		this.sku = sku;
 		this.reorderQuantity = reorderQuantity;
 	}
-	
+
 	public Item(String sku) {
 		super();
 		this.sku = sku;
@@ -104,5 +104,5 @@ public class Item {
 			return false;
 		return true;
 	}
-	
+
 }

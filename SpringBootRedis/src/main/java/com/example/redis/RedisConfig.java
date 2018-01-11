@@ -1,10 +1,11 @@
 package com.example.redis;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -14,6 +15,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper.DefaultTyping;
 
+@Configuration
+@EnableRedisRepositories
 public class RedisConfig {
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
@@ -27,8 +30,8 @@ public class RedisConfig {
 	    return template;
 	}*/
 	
-	public @Bean RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
-
+	@Bean
+	public RedisTemplate<String, Object> redisTemplate() {
 	    RedisTemplate<String, Object> template = new RedisTemplate<>();
 	    template.setConnectionFactory(jedisConnectionFactory());
 	    //template.setDefaultSerializer(new GenericJackson2JsonRedisSerializer());

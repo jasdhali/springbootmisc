@@ -14,16 +14,16 @@ import appsuite.util.ItemDatabaseImpl;
 
 @Service
 public class ItemServiceImpl implements ItemService {
-	
+
 	@Autowired
 	ItemRepository itemRepository;
-	
-	//@Autowired
-	private ItemDatabase itemDatabase=new ItemDatabaseImpl();
+
+	// @Autowired
+	private ItemDatabase itemDatabase = new ItemDatabaseImpl();
 
 	public List<Item> getItems() throws ServiceException {
 		return itemRepository.findAll();
-		//return itemDatabase.getItems();
+		// return itemDatabase.getItems();
 	}
 
 	public Item getItem(long id) throws ServiceException {
@@ -33,39 +33,40 @@ public class ItemServiceImpl implements ItemService {
 		 */
 		return itemRepository.findOne(id);
 	}
-	
-	public void deleteItem(long id) throws ServiceException{
-		itemRepository.delete( id );
+
+	public void deleteItem(long id) throws ServiceException {
+		itemRepository.delete(id);
 	}
-	
-	public void addItem(Item item) throws ServiceException{
-		
-		itemRepository.save( item );
-		
+
+	public void addItem(Item item) throws ServiceException {
+
+		itemRepository.save(item);
+
 	}
-	
-	public void updateItem(Item item) throws ServiceException{
-		/*Item existintItem = getItem(item.getId() );
-		if( existintItem==null) throw new ServiceException("Item with id "+ item.getId() +" does not exist.");
-		existintItem.copyAttributes( item );*/
-		itemRepository.save( item );
-		//itemDatabase.createItem(item);
+
+	public void updateItem(Item item) throws ServiceException {
+		/*
+		 * Item existintItem = getItem(item.getId() ); if( existintItem==null)
+		 * throw new ServiceException("Item with id "+ item.getId()
+		 * +" does not exist."); existintItem.copyAttributes( item );
+		 */
+		itemRepository.save(item);
+		// itemDatabase.createItem(item);
 	}
-	
-	
-    @Override
-	public boolean exists(Item item) throws ServiceException{
-        return findByName(item.getSku()) != null;
+
+	@Override
+	public boolean exists(Item item) throws ServiceException {
+		return findByName(item.getSku()) != null;
 	}
-	
-    @Override
-    public Item findByName(String sku) throws ServiceException{
-        for (Item item : getItems()){
-            if (item.getSku().equals( sku )){
-                return item;
-            }
-        }
-        return null;
-    }
-	
+
+	@Override
+	public Item findByName(String sku) throws ServiceException {
+		for (Item item : getItems()) {
+			if (item.getSku().equals(sku)) {
+				return item;
+			}
+		}
+		return null;
+	}
+
 }

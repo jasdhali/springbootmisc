@@ -8,53 +8,61 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name="Book.findByPrice",query="select name,author,price from Book b where b.price=?1")
-public class Book implements Serializable{
+@NamedQuery(name = "Book.findByPrice", query = "select name,author,price from Book b where b.price=?1")
+public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	long id;
-	@Column(name="name")
+	@Column(name = "name")
 	String name;
-	@Column(name="author")
+	@Column(name = "author")
 	String author;
-	@Column(name="price")
-	long price;	
-	
-	
+	@Column(name = "price")
+	long price;
+
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public String getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
 	public long getPrice() {
 		return price;
 	}
+
 	public void setPrice(long price) {
 		this.price = price;
-	}	
+	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Book(long id, String name, String author, long price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.author = author;
 		this.price = price;
-	}	
-	
+	}
+
 }
