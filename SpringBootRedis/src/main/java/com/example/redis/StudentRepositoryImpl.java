@@ -1,5 +1,6 @@
 package com.example.redis;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
 public class StudentRepositoryImpl implements StudentRepository {
@@ -39,7 +43,17 @@ public class StudentRepositoryImpl implements StudentRepository {
     @Override
 	public void saveStudent(Student student) {
         //hashOps.put(KEY, student.getId(), student);
-        redisTemplate.opsForValue().set( student.getId() , student);
+    	ObjectMapper objectMapper = new ObjectMapper();
+    	String jsonValue=null;
+    	try {
+			jsonValue = objectMapper.writeValueAsString( student );
+			System.out.println( "Student as JSON >>> " + jsonValue );
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        //redisTemplate.opsForValue().set( student.getId() , jsonValue);
+    	hashOps.put(KEY, student.getId(), jsonValue);
     }
  
     /* (non-Javadoc)
@@ -47,7 +61,10 @@ public class StudentRepositoryImpl implements StudentRepository {
 	 */
     @Override
 	public void updateStudent(Student student) {
-        hashOps.put(KEY, student.getId(), student);
+    	//find 
+    	Student studentExisting = findStudent( student.getId());
+    	studentExisting = new Student(studentExisting.getId(), student.getName(), student.getGender(), student.getGrade() );
+    	saveStudent(studentExisting);
     }
  
     /* (non-Javadoc)
@@ -55,7 +72,18 @@ public class StudentRepositoryImpl implements StudentRepository {
 	 */
     @Override
 	public Student findStudent(String id) {
-        return (Student) hashOps.get(KEY, id);
+    	ObjectMapper objectMapper = new ObjectMapper();
+    	String jsonValue=null;
+    	Student studentIns=null;
+    	try {
+			 studentIns = objectMapper.readValue( ""+hashOps.get(KEY, id) , Student.class );
+			System.out.println( "Student as JSON >>> " + jsonValue );
+		} catch ( IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+        return studentIns;
     }
  
     /* (non-Javadoc)
@@ -63,7 +91,8 @@ public class StudentRepositoryImpl implements StudentRepository {
 	 */
     @Override
 	public Map<Object, Object> findAllStudents() {
-        return hashOps.entries(KEY);
+    	Object allEntries = hashOps.entries(KEY);
+        return (Map<Object, Object>)allEntries;
     }
  
     /* (non-Javadoc)

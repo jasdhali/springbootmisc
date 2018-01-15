@@ -6,8 +6,11 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,15 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentController {
 	@Autowired
 	private StudentRepository studentRepository;
-
-	@RequestMapping(value = "/add" , method = RequestMethod.GET)
-	public Student addStudent() {
-		Student student = new Student(
-				  "Eng2015001", "John Doe", Student.Gender.MALE, 1);
-				studentRepository.saveStudent(student);
-		return student;
-	}
-
 	@PostConstruct
 	public void init(){
 		Student engStudent = 
@@ -36,6 +30,22 @@ public class StudentController {
 				studentRepository.saveStudent(engStudent);
 				studentRepository.saveStudent(medStudent);
 	}
+
+	@RequestMapping(value = "/add" , method = RequestMethod.POST , consumes = { MediaType.APPLICATION_JSON_VALUE } )
+	public ResponseEntity<String> addStudent(@RequestBody Student student) {
+		/*Student student = new Student(
+				  "Eng2015001", "John Doe", Student.Gender.MALE, 1);*/
+		
+		studentRepository.saveStudent(student);
+		return new ResponseEntity<>("New student created with id >> " + student.getId() , HttpStatus.OK );
+	}
+	
+	@RequestMapping(  method = RequestMethod.PUT , consumes = { MediaType.APPLICATION_JSON_VALUE } )
+	public ResponseEntity<String> updateStudent(@RequestBody Student student) {
+		studentRepository.updateStudent(student);
+		return new ResponseEntity<>("Student updated successfully with id >> " + student.getId() , HttpStatus.OK );
+	}
+	
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/getall", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public Map<Object, Object> getStudents() {
@@ -44,10 +54,10 @@ public class StudentController {
 		return retrievedStudents;
 	}
 	
-	@RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}" , method = RequestMethod.POST)
 	public Student getStudent(@PathVariable String id) {
 		Student retrievedStudent = 
-				  studentRepository.findStudent("Eng2015001");
+				  studentRepository.findStudent(id);
 		return retrievedStudent;
 	}
 
