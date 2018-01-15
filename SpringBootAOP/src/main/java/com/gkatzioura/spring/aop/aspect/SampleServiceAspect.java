@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
  * Created by gkatzioura on 5/28/16.
 */
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class SampleServiceAspect {
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(SampleServiceAspect.class);

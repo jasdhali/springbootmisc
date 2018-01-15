@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import appsuite.domain.Book;
 
-public interface BookOwnRepository extends JpaRepository<Book,Long>{
-	@Query(value="select author from Book b where b.author=?1")
+public interface BookOwnRepository extends JpaRepository<Book, Long> {
+	@Query(value = "select author from Book b where b.author=?1")
 	List<Book> findByName(String name);
+
 	List<Book> findByNameAndAuthor(String name, String author);
 }

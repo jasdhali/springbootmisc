@@ -39,11 +39,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import appsuite.controller.ItemController;
+import appsuite.controller.UserController;
 import appsuite.domain.Item;
 import appsuite.domain.User;
 import appsuite.exceptions.ServiceException;
-import appsuite.web.ItemController;
-import appsuite.web.UserController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import appsuite.domain.Book;
 
 public interface BookQueryRepositoryExample extends JpaRepository<Book, Long> {
-	
+
 	@Query(value = "select * from #{#entityName} b where b.name=?1", nativeQuery = true)
 	List<Book> findByName(String name);
 
@@ -20,6 +20,5 @@ public interface BookQueryRepositoryExample extends JpaRepository<Book, Long> {
 	List<Book> findByNameMatch(@Param("name") String name);
 
 	@Query(value = "select name,author,price from Book b where b.name = :name AND b.author=:author AND b.price=:price")
-	List<Book> findByNamedParam(@Param("name") String name, @Param("author") String author,
-			@Param("price") long price);
+	List<Book> findByNamedParam(@Param("name") String name, @Param("author") String author, @Param("price") long price);
 }

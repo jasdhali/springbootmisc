@@ -1,4 +1,4 @@
-package appsuite.web;
+package appsuite.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CustomSimpleController {
-	
-	@RequestMapping( value = "/hi" , method = RequestMethod.GET )
+
+	@RequestMapping(value = "/hi", method = RequestMethod.GET)
 	public ResponseEntity<String> home() {
-		return new ResponseEntity<String>("Hello World!" , HttpStatus.OK);
+		return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
 	}
-	
+
 }

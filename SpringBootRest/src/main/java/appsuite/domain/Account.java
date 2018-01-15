@@ -5,9 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-
 @Entity
-public class Account implements Serializable{
+public class Account implements Serializable {
 	/**
 	 * 
 	 */
@@ -15,9 +14,9 @@ public class Account implements Serializable{
 
 	@Id
 	private String id;
-	
+
 	private String username;
-	
+
 	private String password;
 
 	public Account() {

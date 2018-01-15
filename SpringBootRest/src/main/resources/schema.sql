@@ -16,4 +16,7 @@ create table account (
 	password 	varchar2(20),
 	username 	varchar2(20)
 );
+create table simple_user(
+id int primary key, name varchar2(30)
+);
 */

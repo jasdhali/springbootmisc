@@ -15,8 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import appsuite.controller.ItemController;
 import appsuite.domain.Item;
-import appsuite.web.ItemController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ItemController.class)
