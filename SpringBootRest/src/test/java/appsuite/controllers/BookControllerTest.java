@@ -9,8 +9,10 @@ import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import appsuite.controller.BooksController;
+
 import static org.mockito.Mockito.mock;
-import appsuite.web.BooksController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = BooksController.class, secure = false)

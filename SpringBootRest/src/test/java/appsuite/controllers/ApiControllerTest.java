@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import appsuite.web.ApiController;
+import appsuite.controller.ApiController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = ApiController.class, secure = false)

@@ -1,4 +1,4 @@
-package appsuite.web;
+package appsuite.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

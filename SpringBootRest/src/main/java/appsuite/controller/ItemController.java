@@ -1,4 +1,4 @@
-package appsuite.web;
+package appsuite.controller;
 
 import java.util.Collection;
 import java.util.logging.Logger;

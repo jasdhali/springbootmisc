@@ -32,9 +32,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import appsuite.controller.UserController;
 import appsuite.domain.User;
 import appsuite.service.UserService;
-import appsuite.web.UserController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value=UserController.class)

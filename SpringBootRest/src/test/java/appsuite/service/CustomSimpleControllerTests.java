@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 
-import appsuite.web.CustomSimpleController;
+import appsuite.controller.CustomSimpleController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(CustomSimpleController.class)

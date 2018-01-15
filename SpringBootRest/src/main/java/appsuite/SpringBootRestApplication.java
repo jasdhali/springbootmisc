@@ -4,12 +4,10 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@SpringBootApplication(scanBasePackages = "appsuite")
-// @EnableDiscoveryClient
-public class BootStarter extends org.springframework.boot.web.support.SpringBootServletInitializer {
+@SpringBootApplication
+public class SpringBootRestApplication extends org.springframework.boot.web.support.SpringBootServletInitializer {
 
 	@RequestMapping("/hello")
 	public String home() {
@@ -17,7 +15,7 @@ public class BootStarter extends org.springframework.boot.web.support.SpringBoot
 	}
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication app = new SpringApplication(BootStarter.class);
+		SpringApplication app = new SpringApplication(SpringBootRestApplication.class);
 		app.setBannerMode(Banner.Mode.OFF);
 		app.run(args);
 	}
@@ -32,5 +30,5 @@ public class BootStarter extends org.springframework.boot.web.support.SpringBoot
 		return application.sources(applicationClass);
 	}
 
-	private static Class<BootStarter> applicationClass = BootStarter.class;
+	private static Class<SpringBootRestApplication> applicationClass = SpringBootRestApplication.class;
 }

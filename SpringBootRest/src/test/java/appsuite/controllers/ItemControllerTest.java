@@ -18,10 +18,10 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import appsuite.controller.ItemController;
 import appsuite.domain.Item;
 import appsuite.exceptions.ServiceException;
 import appsuite.service.ItemService;
-import appsuite.web.ItemController;
 
 
 @RunWith(SpringRunner.class)
