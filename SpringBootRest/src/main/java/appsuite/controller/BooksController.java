@@ -2,7 +2,7 @@ package appsuite.controller;
 
 import java.util.List;
 
-import javax.ws.rs.PathParam;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,12 +25,7 @@ public class BooksController {
 
 	@RequestMapping( method = RequestMethod.POST )
 	public ResponseEntity<String> addBook(@RequestBody Book book) {
-/*		Book book = new Book();
-		book.setId(id);
-		book.setName(name);
-		book.setAuthor(author);
-		book.setPrice(price);
-*/		
+	
 		if( bookService.findOne(book.getId()) != null){
 			return new ResponseEntity<String>("Book with id >> " + book.getId() + " already available wither delete it first or changes Id", HttpStatus.OK);
 		}
