@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.spring.controller.SimpleController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(SimpleController.class)
+@Ignore
 public class SimpleControllerTest {
 	@Autowired MockMvc mockMvc;
 	

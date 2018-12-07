@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import javax.ws.rs.core.MediaType;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
@@ -23,6 +23,7 @@ import com.spring.controller.SimpleController;
 import com.spring.rest.domain.Position;
 import com.spring.rest.domain.Stock;
 
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(
 		classes=SimpleController.class
@@ -41,7 +42,7 @@ public class IntegratonTest {
 		MockitoAnnotations.initMocks(this);
 	}
 	
-	@Test
+/*	@Test
 	public void buy_valid_symbol_validateResponse() throws Exception{
 		Position pos = new Position(new Stock("IBM","This is a test stock") , 100);
 		String positionAsJson = JsonUtil.convertPositionAsJson(pos);
@@ -51,5 +52,5 @@ public class IntegratonTest {
 		//MvcResult  mvcResult = resultActions.andReturn();
 		//String bodyAsString = mvcResult.getResponse().getContentAsString();
 		//assertEquals( "Bought 100 shares of com.spring.controller.Stock@5851e3dc", bodyAsString);
-	}
+	}*/
 }

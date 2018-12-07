@@ -1,4 +1,4 @@
-package com.spring.config;
+/*package com.spring.config;
 
 import java.sql.SQLException;
 
@@ -39,3 +39,4 @@ public class OracleConfiguration {
         return dataSource;
     }
 }
+*/

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -26,7 +27,7 @@ public class BookRentController {
 	private BookRentalService bookRentalService;
 	
 	
-	@RequestMapping("/rent/{id}")
+	@RequestMapping( value = "/rent/{id}" , method = RequestMethod.GET )
 	public ResponseEntity<String> rentBookById(@PathVariable String id){
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("admin", "admin"));
@@ -41,7 +42,7 @@ public class BookRentController {
 	}
 	
 	
-	@RequestMapping("/rent/all")
+	@RequestMapping( value = "/rent/all" , method = RequestMethod.GET )
  	public List<BookRental> getAllRentals(){
  		return bookRentalService.getAllRentals();
  	}
