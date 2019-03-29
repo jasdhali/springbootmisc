@@ -35,7 +35,6 @@ public class OracleConfiguration {
         dataSource.setURL(url);
         dataSource.setImplicitCachingEnabled(true);
         dataSource.setFastConnectionFailoverEnabled(true);
-        
         return dataSource;
     }
 }

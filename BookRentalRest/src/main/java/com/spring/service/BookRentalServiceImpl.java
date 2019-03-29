@@ -21,6 +21,9 @@ public class BookRentalServiceImpl implements BookRentalService {
 	public List<BookRental> getAllRentals(){
 		return bookRentalRepository.findAll();
 	}
+	public BookRental getRentalById(String id){
+		return bookRentalRepository.findOne( Long.valueOf(id) );
+	}
 	/*
 	@Autowired
 	private BookRepository bookRepository;
