@@ -13,7 +13,7 @@ public interface BookQueryRepositoryExample extends JpaRepository<Book, Long> {
 	@Query(value = "select * from #{#entityName} b where b.name=?1", nativeQuery = true)
 	List<Book> findByName(String name);
 
-	@Query(value = "select name,author,price from Book b where b.price>?1 and b.price<?2")
+	@Query(value = "select name,author,price from Book b where b.price = ?1 and b.price = ?2")
 	List<Book> findByPriceRange(long price1, long price2);
 
 	@Query(value = "select name,author,price from Book b where b.name like %:name%")

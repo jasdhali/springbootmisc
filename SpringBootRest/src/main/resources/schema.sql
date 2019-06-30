@@ -11,6 +11,11 @@ create table book(
       author varchar2(50) not null,
       price Number(6,3));
 
+create table AuditLog(
+      id Number(3) not null primary key,
+      bookid Number(3) not null,
+      type varchar2(50) not null      );
+
 create table account (
 	id 			varchar2(20) not null primary key,
 	password 	varchar2(20),

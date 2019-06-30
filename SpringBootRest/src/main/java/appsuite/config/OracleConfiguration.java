@@ -1,4 +1,4 @@
-package appsuite.config;
+/*package appsuite.config;
 
 import java.sql.SQLException;
 
@@ -34,7 +34,8 @@ public class OracleConfiguration {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
+	
+	
 	@Bean
 	public DataSource dataSource() throws SQLException {
 		OracleDataSource dataSource = new OracleDataSource();
@@ -45,4 +46,6 @@ public class OracleConfiguration {
 		dataSource.setFastConnectionFailoverEnabled(true);
 		return dataSource;
 	}
+	
 }
+*/

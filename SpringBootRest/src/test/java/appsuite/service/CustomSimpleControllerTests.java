@@ -1,9 +1,10 @@
 package appsuite.service;
 
 //
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 //
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,12 +13,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
-
-import appsuite.controller.CustomSimpleController;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(CustomSimpleController.class)
+@WebMvcTest
 public class CustomSimpleControllerTests {
 	@Autowired
     private MockMvc mockMvc;
@@ -30,15 +28,4 @@ public class CustomSimpleControllerTests {
                 //.andExpect( (ResultMatcher)content().string(equalsTo("Greetings from Spring Boot!")))
                 ;
     }
-	
-
 }
-
-/**
-
-Content-Length →12
-Content-Type →text/plain;charset=UTF-8
-Date →Fri, 09 Dec 2016 17:29:34 GMT
-X-Application-Context →application:8080
-
-*/

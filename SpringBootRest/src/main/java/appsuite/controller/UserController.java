@@ -19,8 +19,8 @@ import appsuite.data.repository.UserRepository;
 import appsuite.domain.User;
 import appsuite.service.UserService;
 
-@RestController
-@RequestMapping("/users")
+//@RestController
+//@RequestMapping("/users")
 public class UserController {
 
 	private final Logger LOG = LoggerFactory.getLogger(UserController.class);

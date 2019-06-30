@@ -17,7 +17,7 @@ import appsuite.domain.Item;
 import appsuite.exceptions.ServiceException;
 import appsuite.service.ItemService;
 
-@RestController
+//@RestController
 public class ItemController {
 
 	@Autowired

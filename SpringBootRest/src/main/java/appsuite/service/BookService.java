@@ -15,6 +15,8 @@ public interface BookService {
 	public Book findOne(long id);
 
 	public void delete(long id);
+	
+	public void update(long id,Book book);
 
 	public List<Book> findByName(String name);
 

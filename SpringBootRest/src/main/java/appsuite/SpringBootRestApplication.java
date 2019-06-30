@@ -4,9 +4,11 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
+@EnableJpaRepositories("appsuite.data.repository")
 public class SpringBootRestApplication extends org.springframework.boot.web.support.SpringBootServletInitializer {
 
 	@RequestMapping("/hello")
