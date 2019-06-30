@@ -1,5 +1,6 @@
 package com.spring.rest.emprofile;
 
+
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -7,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import javax.ws.rs.core.MediaType;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
@@ -28,6 +30,7 @@ import com.spring.rest.domain.Stock;
 		classes=SimpleController.class
 		)
 @AutoConfigureMockMvc
+@Ignore
 public class IntegratonTest {
 	
 	@Autowired

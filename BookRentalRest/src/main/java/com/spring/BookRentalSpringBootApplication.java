@@ -1,4 +1,8 @@
 package com.spring;
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication(scanBasePackages="com.spring")
 //@EnableDiscoveryClient
-public class BookRentAppBootStrap extends org.springframework.boot.web.support.SpringBootServletInitializer{
+public class BookRentalSpringBootApplication extends org.springframework.boot.web.support.SpringBootServletInitializer{
 
 		@RequestMapping("/bookrent/hello")
 		public String home() {
@@ -16,7 +20,7 @@ public class BookRentAppBootStrap extends org.springframework.boot.web.support.S
 		}
 
 		public static void main(String[] args) throws Exception {
-			SpringApplication app = new SpringApplication(BookRentAppBootStrap .class);
+			SpringApplication app = new SpringApplication(BookRentalSpringBootApplication .class);
 			app.setBannerMode(Banner.Mode.OFF);
 			app.run(args);
 		}
@@ -26,6 +30,14 @@ public class BookRentAppBootStrap extends org.springframework.boot.web.support.S
 	    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 	        return application.sources(applicationClass);
 	    }
+	    
+	  @Autowired(required = false) 
+	  DataSource dataSource;
+	  
+	  @PostConstruct
+	  public void postConstructMthd(){
+		  System.out.println(".....postConstructMthd.....");
+	  }
 
-	    private static Class<BookRentAppBootStrap > applicationClass = BookRentAppBootStrap .class;
+	   private static Class<BookRentalSpringBootApplication > applicationClass = BookRentalSpringBootApplication .class;
 	}

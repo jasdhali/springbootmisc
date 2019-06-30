@@ -6,6 +6,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Date;
 
+import javax.sql.DataSource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,7 @@ public class BookRentalControllerTest {
 	private BookRentalService bookRentalService;
 
 	@Autowired ObjectMapper objectMapper;
+	//@Autowired DataSource dataSource;
 
 	@Value("${oracle2.username}")
 	private String configProp;

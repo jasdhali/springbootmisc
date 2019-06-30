@@ -51,4 +51,8 @@ public class BookRentController {
  	public List<BookRental> getAllRentals(){
  		return bookRentalService.getAllRentals();
  	}
+	@RequestMapping( value = "/books" ,  method = RequestMethod.GET)
+ 	public List<Book> getAllBooks(){
+ 		return bookRentalService.getAllBooks();
+ 	}
 }

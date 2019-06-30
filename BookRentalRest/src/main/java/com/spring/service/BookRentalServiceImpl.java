@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.repository.BookRentalRepository;
+import com.spring.repository.BookRepository;
+import com.spring.rest.domain.Book;
 import com.spring.rest.domain.BookRental;
 
 @Service
@@ -24,20 +26,21 @@ public class BookRentalServiceImpl implements BookRentalService {
 	public BookRental getRentalById(String id){
 		return bookRentalRepository.findOne( Long.valueOf(id) );
 	}
-	/*
+	
 	@Autowired
 	private BookRepository bookRepository;
+
+	public List<Book> getAllBooks() {
+		return bookRepository.findAll();
+	}
+
+	/*
 	@Autowired
 	private BookOwnRepository bookOwnRepository;
 	@Autowired
 	private BookQueryRepositoryExample bookQueryRepository;
 	@Autowired
 	private BookNamedQueryRepositoryExample bookNamedQueryRepository;
-
-	public List<Book> findAll() {
-		return bookRepository.findAll();
-	}
-
 	public List<Book> findByName(String name) {
 		return bookQueryRepository.findByName(name);
 	}
